@@ -5,7 +5,7 @@ export default function ajax (url, data={}, type='GET') {
 		
 		let promise
 	if(type === 'GET') {
-		let dateStr = ''
+		let dataStr = ''
 		Object.keys(data).forEach(key => {
 			dataStr += key + '=' + data[key] + '&'
 		})
@@ -14,16 +14,16 @@ export default function ajax (url, data={}, type='GET') {
 			url = url + '?' +dataStr
 		}
 		promise = axios.get(url)
-	}esle {
+	}else { 
 		promise = axios.post(url, data)
 	}
 	promise.then(function (response) {
 		resolve(response.data)
-	}).catch(function (error) ){
+	}).catch(function (error) {
 		reject(error)
 	}
 		
+	)
 	})
-	
 	
 }
